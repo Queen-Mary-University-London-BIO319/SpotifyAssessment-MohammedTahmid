@@ -126,13 +126,7 @@ spotify_data <- spotify_data %>%
 
 View(spotify_data)
 
-# Write the dataframe 'spotify_data' to a text file
-write.table(spotify_data,                  
-            "spotify_clean_data_output.txt",     
-            sep="\t",                      
-            col.names = TRUE,              
-            row.names = FALSE,             
-            quote = FALSE)                 
+                
 
 
 
