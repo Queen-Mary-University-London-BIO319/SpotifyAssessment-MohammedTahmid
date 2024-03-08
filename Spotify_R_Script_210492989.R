@@ -26,8 +26,9 @@ spotify_data <- spotify_data %>%
                        names = c("danceability",
                                  "energy"))
 
+#commit -----------------------------------------------------------------------
 
-# Rename 'track_id' to 'track, album and playlist id'
+# Rename 'track_id' to 'track album and playlist id'
 spotify_data <- spotify_data %>%
   rename("track_album_and_playlist_id" = track_id)
 
@@ -53,3 +54,5 @@ spotify_data <- spotify_data %>%
          valence = as.double(valence),
          tempo = as.double(tempo),
          duration_ms = as.double(duration_ms))
+
+#commit -----------------------------------------------------------------------
