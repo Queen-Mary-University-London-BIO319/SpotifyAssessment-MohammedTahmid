@@ -78,6 +78,61 @@ spotify_data <- spotify_data %>%
 
 #commit -----------------------------------------------------------------------
 
+#ensures each column follows the directory's description, else produces an NA result.
+spotify_data <- spotify_data %>%
+  mutate(
+    danceability = case_when(
+      danceability < 0 | danceability > 1 ~ NA_real_,
+      TRUE ~ danceability
+    ),
+    energy = case_when(
+      energy < 0 | energy > 1 ~ NA_real_,
+      TRUE ~ energy
+    ),
+    key = case_when(
+      !key %in% c(-1, 0:11) ~ NA_real_,
+      TRUE ~ key
+    ),
+    loudness = case_when(
+      loudness < -60 | loudness > 0 ~ NA_real_,
+      TRUE ~ loudness
+    ),
+    mode = case_when(
+      mode != 0 & mode != 1 ~ NA_real_,
+      TRUE ~ mode
+    ),
+    speechiness = case_when(
+      speechiness < 0 | speechiness > 1 ~ NA_real_,
+      TRUE ~ speechiness
+    ),
+    acousticness = case_when(
+      acousticness < 0 | acousticness > 1 ~ NA_real_,
+      TRUE ~ acousticness
+    ),
+    instrumentalness = case_when(
+      instrumentalness < 0 | instrumentalness > 1 ~ NA_real_,
+      TRUE ~ instrumentalness
+    ),
+    liveness = case_when(
+      liveness < 0 | liveness > 1 ~ NA_real_,
+      TRUE ~ liveness
+    ),
+    valence = case_when(
+      valence < 0 | valence > 1 ~ NA_real_,
+      TRUE ~ valence
+    )
+  )
+
+
+View(spotify_data)
+
+# Write the dataframe 'spotify_data' to a text file
+write.table(spotify_data,                  
+            "spotify_clean_data_output.txt",     
+            sep="\t",                      
+            col.names = TRUE,              
+            row.names = FALSE,             
+            quote = FALSE)                 
 
 
 
