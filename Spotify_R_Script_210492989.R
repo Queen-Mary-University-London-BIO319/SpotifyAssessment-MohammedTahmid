@@ -9,15 +9,11 @@ library(tidyr)
 library(dplyr)
 
 
-#clean column names
-colnames(spotify_data) <- gsub("[0-9f]", "", colnames(spotify_data))
+#change column name to correct name
+colnames(spotify_data)[colnames(spotify_data)== "TTrack_nameff5"] <- "track_name"
 
 #make everything in the dataset lowercase
 spotify_data %>% rename_with(tolower,everything())
-
-#change column name to correct name
-colnames(spotify_data)[colnames(spotify_data)== "TTrack_name"] <- "track_name"
-
 
 
 # Separate 'danceability_energy' into two columns: 'danceability' and 'energy'
