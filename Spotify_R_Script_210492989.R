@@ -56,3 +56,16 @@ spotify_data <- spotify_data %>%
          duration_ms = as.double(duration_ms))
 
 #commit -----------------------------------------------------------------------
+
+print(colnames(spotify_data))  
+str(spotify_data)
+glimpse(spotify_data)
+
+#perform case-insensitive search and replacement for 'Bad Sunny'
+spotify_data <- spotify_data %>%
+  mutate(track_artist = case_when(
+    tolower(track_artist) == "bad sunny" ~ "Bad Bunny",
+    TRUE ~ track_artist
+  ))
+
+#commit -----------------------------------------------------------------------
