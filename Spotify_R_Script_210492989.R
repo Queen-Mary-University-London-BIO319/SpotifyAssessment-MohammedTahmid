@@ -73,6 +73,7 @@ spotify_data <- spotify_data %>%
 #the numeric values will be shown in their full decimal format
 options(scipen = 999)
 
+#removes 'pop', 'rap', 'rock;, 'r.b' and 'edm' and places them under 'playlist_genre', and 'playlist_subgenre' to neaten the table.
 spotify_data <- spotify_data %>%
   pivot_longer(cols = c("pop", "rap", "rock", "r.b", "edm"), names_to = "playlist_genre", values_to = "playlist_subgenre", values_drop_na = TRUE)
 
@@ -126,7 +127,14 @@ spotify_data <- spotify_data %>%
 
 View(spotify_data)
 
-                
+
+# Write the dataframe 'spotify_data' to a text file
+write.table(spotify_data,                  
+            "spotify_clean_data_output.txt",     
+            sep="\t",                      
+            col.names = TRUE,              
+            row.names = FALSE,             
+            quote = FALSE)               
 
 
 
