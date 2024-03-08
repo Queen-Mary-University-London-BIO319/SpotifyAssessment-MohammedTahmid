@@ -69,3 +69,16 @@ spotify_data <- spotify_data %>%
   ))
 
 #commit -----------------------------------------------------------------------
+
+#the numeric values will be shown in their full decimal format
+options(scipen = 999)
+
+spotify_data <- spotify_data %>%
+  pivot_longer(cols = c("pop", "rap", "rock", "r.b", "edm"), names_to = "playlist_genre", values_to = "playlist_subgenre", values_drop_na = TRUE)
+
+#commit -----------------------------------------------------------------------
+
+
+
+
+
